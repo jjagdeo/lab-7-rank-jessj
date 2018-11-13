@@ -25,3 +25,20 @@ kermit_hist <- ggplot(kermit, aes(x = Score.pre)) +
 kermit_hist
 ```
 
+Jess: Perform rank-based comparisons using Mann-Whitney U and Wilcoxon-Signed Rank
+
+Question: Is there a significant difference in pre-talk ranks of Kermit for male and female respondents?
+
+```{r}
+
+mwu_kermit <- kermit %>% 
+  wilcox.test(Score.pre ~ Gender, data = .)
+
+mwu_kermit
+
+# NUll hypothesis: There is NOT a significant difference in ranks for male and female respondents.
+# Alternative hypothesis: There IS a significant difference in ranks for male and female respondents.
+  
+```
+
+"There was no significant difference in ranks for male and female respondents (W = 155.5, p = 0.4, alpha = 0.05)."
